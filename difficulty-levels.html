@@ -1,40 +1,90 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Cabin|Inconsolata|Nunito|Nunito+Sans|Pacifico|Quicksand|Rubik|VT323"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/difficulty-levels.css" /><link rel="stylesheet" href="../css/institucional-juego.css" />
-    <title>Difficulty</title>
-    <link rel="icon" href="../image/icyTower.png" />
-  </head>
-
-  <body>
-    <a href="../index.html">
-      <img src="../image/back.png" class="back"
-    /></a>
-    <a href="../html/home-page.html"
-      ><img src="../image/home.png" class="home"
-    /></a>
-    <div class="all-levels">
-      <img src="../image/icyTower.png" />
-      <h1>Elegí la dificultad</h1><p class="school-tag">IPET Nº 249 · Especialidad en Informática</p>
-      <a href="../html/tower.html?level=beginner" class="levels" id="level-one"
-        >Principiante</a
-      >
-      <a href="../html/tower.html?level=advanced" class="levels" id="level-two"
-        >Avanzado</a
-      >
-      <a
-        href="../html/tower.html?level=champions"
-        class="levels"
-        id="level-three"
-        >Experto</a
-      >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seleccionar Dificultad | Icy Tower - IPET Nº 249</title>
+  <link rel="icon" href="escudo-ipet249.png">
+  <link rel="stylesheet" href="institucional.css">
+  <style>
+    .niveles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .nivel-card {
+      background: #fff;
+      border: 2px solid #6b0f1a;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      color: #222;
+    }
+    .nivel-card strong {
+      display: block;
+      color: #6b0f1a;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .btn-volver {
+      margin-top: 10px;
+      background: #4a0a12;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <img src="escudo-ipet249.png" alt="Escudo del IPET Nº 249">
+    <div>
+      <strong>IPET Nº 249 “Nicolás Copérnico”</strong>
+      <span>Especialidad en Informática · Laboratorio de Programación · 6º G</span>
     </div>
-  </body>
+  </header>
+
+  <main class="hero">
+    <p class="eyebrow">CONFIGURACIÓN DE PARTIDA</p>
+    <h2>Elegí la velocidad de la torre</h2>
+    <p class="lead">Cada nivel ajusta la velocidad base de subida de la cámara y los pisos.</p>
+
+    <div class="niveles-grid">
+      <button type="button" class="nivel-card" data-vel="0.85" data-nombre="Básico (1.0x)">
+        <strong>Nivel 1: Básico</strong>
+        <span>Ritmo tranquilo para practicar</span>
+      </button>
+      <button type="button" class="nivel-card" data-vel="1.2" data-nombre="Intermedio (1.3x)">
+        <strong>Nivel 2: Intermedio</strong>
+        <span>Velocidad media de compilación</span>
+      </button>
+      <button type="button" class="nivel-card" data-vel="1.65" data-nombre="Avanzado (1.6x)">
+        <strong>Nivel 3: Avanzado</strong>
+        <span>Mayor exigencia en la torre</span>
+      </button>
+    </div>
+
+    <button type="button" id="btn-volver" class="btn-volver">← Volver al inicio</button>
+  </main>
+
+  <footer>IPET Nº 249 “Nicolás Copérnico” · Córdoba · 2026</footer>
+
+  <script>
+    document.querySelectorAll('.nivel-card').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        sessionStorage.setItem('velocidadBase', btn.dataset.vel);
+        sessionStorage.setItem('dificultadNombre', btn.dataset.nombre);
+        location.href = 'tower.html';
+      });
+    });
+
+    document.getElementById('btn-volver').addEventListener('click', () => {
+      location.href = 'index.html';
+    });
+  </script>
+</body>
 </html>
