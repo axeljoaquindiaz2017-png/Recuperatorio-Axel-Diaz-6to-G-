@@ -1,0 +1,5 @@
+body{background:#fff7e6!important;font-family:Arial,sans-serif!important}
+#myCanvas{border:5px solid #64152b!important;background-image:linear-gradient(180deg,#fff4d1,#e8b8a2)!important}
+.game-score h1{color:#64152b;font-family:Arial,sans-serif}.game-score span{color:#c83232;font-family:Arial,sans-serif}
+.overModal{background:#fff7e6!important;border:3px solid #64152b!important;color:#64152b!important;z-index:20}
+.link{background:#64152b!important;color:white!important;padding:10px 14px!important}

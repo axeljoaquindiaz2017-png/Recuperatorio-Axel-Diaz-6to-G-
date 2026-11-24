@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icy Tower | IPET Nº 249</title><link rel="icon" href="image/escudo-ipet249.png">
+<link rel="stylesheet" href="css/institucional.css">
+</head>
+<body>
+<header class="top"><img src="image/escudo-ipet249.png" alt="Escudo del IPET Nº 249"><div><strong>IPET Nº 249 “Nicolás Copérnico”</strong><span>Especialidad en Informática · Laboratorio de Programación · 6º G</span></div></header>
+<main class="hero">
+<p class="eyebrow">PROYECTO ESCOLAR · 2026</p><h1>ICY <em>TOWER</em></h1>
+<p class="lead">¡Subí la torre y superá cada nivel! Una versión personalizada con la identidad de nuestra escuela y referencias al mundo de la informática.</p>
+<div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Informática</span></div>
+<button id="play">JUGAR AHORA</button>
+<section class="info"><h2>Controles</h2><p><b>← / →</b> Mover el personaje · <b>↑</b> Saltar</p><p>Sumá puntos al avanzar por las plataformas. Cada piso representa un nuevo desafío.</p></section>
+</main>
+<footer>IPET Nº 249 “Nicolás Copérnico” · Córdoba · 2026</footer>
+<script>
+document.getElementById('play').addEventListener('click',()=>{
+ const user={firstName:'Estudiante',userName:'ipet249',highScore:0,secondScore:0};
+ sessionStorage.setItem('currentUser',JSON.stringify(user));
+ sessionStorage.setItem('hero','../image/hero2_2.png');
+ location.href='html/difficulty-levels.html';
+});
+</script>
+</body></html>
