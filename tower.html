@@ -1,50 +1,46 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Cabin|Inconsolata|Nunito|Nunito+Sans|Pacifico|Quicksand|Rubik|VT323"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/tower.css" /><link rel="stylesheet" href="../css/institucional-juego.css" />
-    <title>Let's Play</title>
-    <link rel="icon" href="../image/icyTower.png" />
-  </head>
-
-  <body>
-    <header>
-      <iframe src="../html/iframe-hello-user.html" frameborder="0"></iframe>
-    </header>
-
-    <a href="../html/characters.html">
-      <img src="../image/back.png" class="back"
-    /></a>
-    <canvas id="myCanvas"></canvas>
-    <div id="over-modal" class="overModal">
-      <button id="close-modal">
-        <img src="../image/x.png" alt="x" />
-      </button>
-      <h1>¡FIN DEL JUEGO!</h1>
-      <h2>¿Qué querés hacer ahora?</h2>
-      <a class="link" href="../index.html">Volver al inicio</a>
-      <a class="link" href="../html/game-scores.html">Puntajes</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jugando Icy Tower | IPET Nº 249</title>
+  <link rel="icon" href="escudo-ipet249.png">
+  <link rel="stylesheet" href="tower.css">
+</head>
+<body>
+  <header class="top">
+    <img src="escudo-ipet249.png" alt="Escudo del IPET Nº 249">
+    <div>
+      <strong>IPET Nº 249 “Nicolás Copérnico”</strong>
+      <span>Laboratorio de Programación · 6º G · Informática</span>
     </div>
-    <div id="agree-to-sound" class="overModal">
-      <button class="btn-close">
-        <img src="../image/x.png" alt="x" />
-      </button>
-      <h2>¿Querés activar la música?</h2>
-      <button  class="btn-agree link">Sí</button>
+    <a href="index.html" class="link-inicio">Inicio</a>
+  </header>
+
+  <main class="torre-contenedor">
+    <div class="hud">
+      <div><span>PISO</span><strong id="hud-piso">0</strong></div>
+      <div><span>PUNTOS</span><strong id="hud-puntos">0</strong></div>
+      <div><span>RITMO</span><strong id="hud-ritmo">1.0x</strong></div>
     </div>
 
-    <footer class="game-score">
-      <div>
-        <h1>PUNTAJE</h1>
-        <span id="score-span">score here</span>
-      </div>
-    </footer>
-    <script src="../js/tower.js"></script>
-  </body>
+    <div id="aviso-hito" class="aviso-hito oculto"></div>
+
+    <canvas id="gameCanvas" width="420" height="540"></canvas>
+
+    <div class="controles-movil" aria-label="Controles táctiles">
+      <button type="button" id="btn-izq" class="btn-control">◀</button>
+      <button type="button" id="btn-der" class="btn-control">▶</button>
+      <button type="button" id="btn-salto" class="btn-control btn-salto">SALTAR ▲</button>
+    </div>
+
+    <div id="modal-fin" class="modal-fin oculto">
+      <h2>¡Fin de la partida!</h2>
+      <p id="texto-resultado"></p>
+      <button type="button" id="btn-reintentar" class="btn-reintentar">Jugar de nuevo</button>
+    </div>
+  </main>
+
+  <script src="tower.js"></script>
+</body>
 </html>
