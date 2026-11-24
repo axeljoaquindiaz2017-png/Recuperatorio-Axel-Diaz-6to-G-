@@ -1,85 +1,176 @@
-body {
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-  font-family: 'Pacifico', cursive;
-  background-image: url('../image/background-for-game.png');
+:root {
+  --bordo: #6b0f1a;
+  --bordo-oscuro: #3d070e;
+  --amarillo: #f4c430;
+  --rojo: #d62828;
+  --blanco: #ffffff;
+  --fondo: #f7f3ee;
 }
 
-#myCanvas {
-  width: 60%;
-  max-height: 100%;
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--fondo);
+  color: #1d1d1d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top {
+  width: 100%;
+  background-color: var(--bordo);
+  color: var(--blanco);
+  border-bottom: 3px solid var(--amarillo);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.top strong {
   display: block;
-  position: absolute;
-  height: 99.4%;
-  top: 0;
-  bottom: 0;
-  right: 19%;
-  border: 2px solid black;
-  background-image: url('../image/stone-wall.jpg');
-  background-repeat: repeat;
-  background-size: cover;
-  background-position: center;
+  font-size: 0.95rem;
 }
 
-.game-score {
-  position: fixed;
-  bottom: 0;
-  margin-right: 10px;
-  width: 24%;
-}
-.game-score span {
-  font-size: 6em;
-  line-height: 0.6;
-  text-align: center;
-  /* letter-spacing: -5px; */
+.top span {
+  font-size: 0.78rem;
+  opacity: 0.92;
 }
 
-.game-score h1 {
-  font-size: 3em;
-  line-height: 0.1;
-}
-
-.back {
-  margin-top: -10%;
-  width: 5%;
-  display: inline-block;
-  float: right;
-  opacity: 0.5;
-}
-
-.link {
-  min-width: 100px;
-  height: 50px;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-  color: #315bff;
-  outline: none;
-  font-size: 20px;
+.link-inicio {
+  margin-left: auto;
+  color: var(--amarillo);
   text-decoration: none;
-  background-color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
 }
 
-.link:hover {
-  box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.5);
+.torre-contenedor {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 14px auto;
+  background: var(--bordo-oscuro);
+  border: 3px solid var(--bordo);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.closeModal {
-  color: #aaa;
-  float: right;
+.hud {
+  display: flex;
+  justify-content: space-around;
+  background: var(--bordo);
+  color: var(--blanco);
+  padding: 8px;
+  border-bottom: 2px solid var(--amarillo);
+}
+
+.hud div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud span {
+  font-size: 0.7rem;
+  color: var(--amarillo);
   font-weight: bold;
 }
 
-.overModal {
-  display: none;
-  background-image: url('../image/background-for-game.png');
-  position: fixed;
-  width: 25%;
-  margin-top: 15%;
+.hud strong {
+  font-size: 1.1rem;
+}
+
+.aviso-hito {
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--amarillo);
+  color: var(--bordo-oscuro);
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--rojo);
+  z-index: 4;
+  white-space: nowrap;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, #260509 0%, #4a0a12 100%);
+}
+
+.controles-movil {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  background: var(--bordo);
+  border-top: 2px solid var(--amarillo);
+}
+
+.btn-control {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid var(--amarillo);
+  border-radius: 8px;
+  background: var(--bordo-oscuro);
+  color: var(--blanco);
+  touch-action: none;
+  user-select: none;
+}
+
+.btn-salto {
+  flex: 1.6;
+  background: var(--rojo);
+}
+
+.modal-fin {
+  position: absolute;
+  inset: 0;
+  background: rgba(38, 5, 9, 0.92);
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
   padding: 20px;
-  border: 1px solid #888;
-  border-radius: 40px;
-  margin-right: 42.5%;
-  margin-left: 42.5%;
+  text-align: center;
+  z-index: 10;
+}
+
+.btn-reintentar {
+  background: var(--rojo);
+  color: var(--blanco);
+  border: 2px solid var(--amarillo);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.oculto {
+  display: none !important;
 }
